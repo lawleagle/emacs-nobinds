@@ -1029,7 +1029,7 @@ is not copied.  */)
 
 /* GC is possible in this function if it autoloads a keymap.  */
 
-DEFUN ("define-key", Fdefine_key, Sdefine_key, 3, 3, 0,
+DEFUN ("add-keybind", Fadd_keybind, Sadd_keybind, 3, 3, 0,
        doc: /* In KEYMAP, define key sequence KEY as DEF.
 KEYMAP is a keymap.
 
@@ -1159,6 +1159,16 @@ binding KEY to DEF is added at the front of KEYMAP.  */)
 		 trailing_esc);
 	}
     }
+}
+
+DEFUN ("define-key", Fdefine_key, Sdefine_key, 3, 3, 0,
+       doc: /* This was replaced with a stub to remove all default
+keybindings. The original define-key is not add-keybind. Now nothing
+will add keybindings because everything will call define-key which does
+nothing, but you can call add-keybind which is actually the old define-key.  */)
+  (Lisp_Object keymap, Lisp_Object key, Lisp_Object def)
+{
+  return Qnil;
 }
 
 /* This function may GC (it calls Fkey_binding).  */
@@ -3736,6 +3746,7 @@ be preferred.  */);
   defsubr (&Sglobal_key_binding);
   defsubr (&Sminor_mode_key_binding);
   defsubr (&Sdefine_key);
+  defsubr (&Sadd_keybind);
   defsubr (&Slookup_key);
   defsubr (&Sdefine_prefix_command);
   defsubr (&Suse_global_map);
