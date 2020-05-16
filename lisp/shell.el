@@ -331,17 +331,17 @@ Thus, this does not include the shell's current directory.")
     (define-key map "\t" 'completion-at-point)
     (define-key map (kbd "M-RET") 'shell-resync-dirs)
     (define-key map "\M-?" 'comint-dynamic-list-filename-completions)
-    (define-key map [menu-bar completion]
-      (cons "Complete"
-	    (copy-keymap (lookup-key comint-mode-map [menu-bar completion]))))
-    (define-key-after (lookup-key map [menu-bar completion])
-      [complete-env-variable] '("Complete Env. Variable Name" .
-				shell-dynamic-complete-environment-variable)
-      'complete-file)
-    (define-key-after (lookup-key map [menu-bar completion])
-      [expand-directory] '("Expand Directory Reference" .
-			   shell-replace-by-expanded-directory)
-      'complete-expand)
+    ;;(add-keybind map [menu-bar completion]
+    ;;  (cons "Complete"
+	  ;;  (copy-keymap (lookup-key map [menu-bar completion]))))
+    ;;(define-key-after (lookup-key map [menu-bar completion])
+    ;;  [complete-env-variable] '("Complete Env. Variable Name" .
+		;;		shell-dynamic-complete-environment-variable)
+    ;;  'complete-file)
+    ;;(define-key-after (lookup-key map [menu-bar completion])
+    ;;  [expand-directory] '("Expand Directory Reference" .
+		;;	   shell-replace-by-expanded-directory)
+    ;;  'complete-expand)
     map))
 
 (defcustom shell-mode-hook '()
