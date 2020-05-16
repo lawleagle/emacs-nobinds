@@ -127,7 +127,7 @@ Returns the number of actions taken."
             (let ((map (make-sparse-keymap)))
               (set-keymap-parent map query-replace-map)
               (dolist (elt action-alist)
-                (define-key map (vector (car elt)) (vector (nth 1 elt))))
+                (add-keybind map (vector (car elt)) (vector (nth 1 elt))))
               map)))
     (unwind-protect
 	(progn
@@ -333,13 +333,13 @@ When `use-dialog-box' is t, pop up a dialog window to get user input."
                          (let ((map (make-sparse-keymap)))
                            (set-keymap-parent map minibuffer-local-map)
                            (dolist (a answers-with-help)
-                             (define-key map (vector (nth 1 a))
+                             (add-keybind map (vector (nth 1 a))
                                (lambda ()
                                  (interactive)
                                  (delete-minibuffer-contents)
                                  (insert (nth 0 a))
                                  (exit-minibuffer))))
-                           (define-key map [remap self-insert-command]
+                           (add-keybind map [remap self-insert-command]
                              (lambda ()
                                (interactive)
                                (delete-minibuffer-contents)
