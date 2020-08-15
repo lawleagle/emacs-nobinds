@@ -257,11 +257,11 @@ After that, changing the prefix key requires manipulating keymaps."
     ;; the look and feel of Follow mode.)
     (define-key mainmap [remap end-of-buffer] 'follow-end-of-buffer)
 
-    (define-key mainmap [remap scroll-bar-toolkit-scroll] 'follow-scroll-bar-toolkit-scroll)
-    (define-key mainmap [remap scroll-bar-drag] 'follow-scroll-bar-drag)
-    (define-key mainmap [remap scroll-bar-scroll-up] 'follow-scroll-bar-scroll-up)
-    (define-key mainmap [remap scroll-bar-scroll-down] 'follow-scroll-bar-scroll-down)
-    (define-key mainmap [remap mwheel-scroll] 'follow-mwheel-scroll)
+    (add-keybind mainmap [remap scroll-bar-toolkit-scroll] 'follow-scroll-bar-toolkit-scroll)
+    (add-keybind mainmap [remap scroll-bar-drag] 'follow-scroll-bar-drag)
+    (add-keybind mainmap [remap scroll-bar-scroll-up] 'follow-scroll-bar-scroll-up)
+    (add-keybind mainmap [remap scroll-bar-scroll-down] 'follow-scroll-bar-scroll-down)
+    (add-keybind mainmap [remap mwheel-scroll] 'follow-mwheel-scroll)
 
     mainmap)
   "Minor mode keymap for Follow mode.")

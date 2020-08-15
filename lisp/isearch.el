@@ -446,7 +446,7 @@ This is like `describe-bindings', but displays only Isearch keys."
     ;; Single-byte printing chars extend the search string by default.
     (setq i ?\s)
     (while (< i 256)
-      (define-key map (vector i) 'isearch-printing-char)
+      (add-keybind map (vector i) 'isearch-printing-char)
       (setq i (1+ i)))
 
     ;; To handle local bindings with meta char prefix keys, define
